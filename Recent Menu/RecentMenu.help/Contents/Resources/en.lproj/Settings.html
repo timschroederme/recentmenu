@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/ >
+	<title>Settings</title> 
+	<meta name="copyright" content="Copyright 2011 Tim Schröder. All Rights Reserved."/ >
+	<meta name="description" content="General Preferences - Search Preferences - Filter Preferences"/ >
+	<link href="../Shared/styles.css" rel="stylesheet" media="screen" type="text/css"/ >
+    </head>
+    <body bgcolor="#FFFFFF" style="" >
+
+
+<div class="border">&nbsp;&nbsp;&nbsp;&nbsp;<a href="RecentMenuHelp.html">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="Intro.html">Overview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="Settings.html">Settings</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="Support.html">Support</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="Changelog.html">What's new?</a></div>
+
+<div id="headerbox"><h1><img src="../Shared/icon32.png" alt="Recent Menu Icon" height="32" width="32" align="absmiddle" /> Recent Menu Help</h1></div>
+
+<h3 id="settings">Settings</h3>
+<p>You can configure Recent Menu in three preferences panes wich are accessible from the menu bar menu.</p>
+<h5><u>General Preferences</u></h5>
+<p><img src="prefs_general_eng.png" class="image2"></p>
+<h6>Launch At Login</h6>
+<p>In the general preferences pane you can set Recent Menu to start automatically when you login. By default this is option is not enabled. </p>
+<h6> Hotkey</h6>
+<p>You can also set a customizable hotkey to access Recent Menu (after it has been started and is visible in the system menu bar). By default, this option is not enabled as no hotkey is defined. To turn on this option, just define a hotkey. To achieve this, klick on the hotkey input field: <img src="key1.png" align="absmiddle" class="image2"> and press the combination of keys you would like to use as hotkey. You have to use a combination between a normal key and a modifier key (Shift, Alt, Control, Command). Once you have successfully entered a combination of keys, this combination is shown in the hotkey input field: <img src="key2.png" align="absmiddle" class="image2"> (in this example: Alt+F). This also enables the hotkey. To disable the hotke function, just lick on the cross at the right side of the hotkey input field. </p>
+<h6>File System Access</h6>
+<p>Starting with Version 1.2.1, Recent Menu runs in a sandbox. This means that it has basically no access to your file system, which is good for security. However, in order to work, it needs to have read access, as otherwhise it couldn't monitor which files and folders you've recently accessed. You have therefore to grant Recent Menu these access rights by clicking on the Grant Access button and by confirming the selection in the file dialog. You have to do this only once, but without these access rights Recent Menu won't work.</p>
+<h5><u>Search Preferences</u></h5>
+<p><img src="prefs_search_eng.png" class="image2"></p>
+<p>Search preferences allow you to adjust for which period of time (&quot;Search Period&quot;) Recent Menu will monitor file and folder access. A higher value here means that Recent Menu will show more items. Typical values would be anything between a couple of hours and a couple of days (measured in hours). Files and folders which have been accessed before a longer time than it is defined here won't be shown by Recent Menu. </p>
+<p>You may also adjust the locations in which Recent Menu will look for recently accessed items (&quot;Search Location&quot;). If you decide to let Recent Menu only monitor user and application folders this will show not everything typicalle accessed on your computer, though it will cover more or less any files and folders you have created. If you decide to let Recent Menu monitor all local folders you will get more results, depending on your filter settings. </p>
+<div class="note"><strong>Note:</strong> Recent Menu cannot monitor items that are not located on your local computer but which are stored in an internet or network location.</div>
+<h5><u>Filter Preferences</u></h5>
+<p><img src="prefs_filter_eng.png" class="image2"></p>
+<p>The filter preferences pane allows you to define and edit custom filters and to change the order in which the filters are shown in the recent items list. Filters which are enabled will be shown in the recent items list in the same order in which they appear in the source view. To change the order of filters, just drag and drop filters inside the source view. To enable or disable filters, click on the &quot;Show in Menu&quot; button. Add a new filter by clicking on the  <img src="../Shared/plus.png" align="absmiddle" class="image2"> button and delete a filter by clicking on the  <img src="../Shared/minus.png" align="absmiddle" class="image2"> button.</p>
+<div class="note"><strong>Note:</strong> You cannot delete the &quot;Everything&quot; filter.</div>
+<p>By clicking on the <img src="../Shared/settings.png" align="absmiddle" class="image2"> button and then on the &quot;reset filters&quot; command you can reset all filters to its built-in settings. </p>
+<div class="note"><strong>Note:</strong> If you reset the filters, all of your user-defined filters will be deleted!</div>
+<p>On the right side of the filter settings pane you can edit the titles of filters, set the number of entries shown for each filter and activate or deactivate each filter. Filters which are deactivated won't be shown in the list of recent items. To define the filter criteria, please follow these rules: </p>
+<ul>
+  <li>You may use the name of recently accessed files or folders as search criterion. If you want Recent Menu to look for recently accessed items which share a common element in their file name (like the file extension), select this option and enter the term to search for. You may use the &quot;*&quot; wildcard. For example, to find all PDF files recently accessed, you could enter &quot;*pdf&quot; as search term. </li>
+  <li>You may use the Uniform Type Identifier (UTI) of recently accessed files or folders as search criterion. For example, you can use the search term &quot;com.adobe.pdf&quot; to define a filter of recently accessed PDF files. For more information on UTI's please visit the support page (see below).</li>
+  <li>You may use more than on filter criterion in a used-defined filter by comma-separating the criteria. Recent Menu will then show all items matching at least one of the criteria. For example, if you define a filter string as &quot;*pdf, *png&quot;, Recent Menu will show PDF files as well as PNG files for this filter.</li>
+  <li>You can exlude specific files or folders from being shown in the results list by using an exclamation mark (!) before a search criterion identifying the files or folders you want to exclude. This works with UTI search terms as well as with name search terms. For example, to exclude all email messages from being shown, use &quot;!public.message&quot; as search term, to exluce all files whose file name contains the characters &quot;credit&quot;, use &quot;!*credit*&quot; as search term. </li>
+</ul>
+</body></html>

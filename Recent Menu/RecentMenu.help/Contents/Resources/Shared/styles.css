@@ -1,0 +1,145 @@
+body {
+	margin:0px;
+	padding:0px;
+	line-height:1.3em;
+	font-family:helvetica, arial, sans-serif;
+	font-size:14px;
+}
+
+.image {
+	margin: 20px 20px 5px 20px;
+	padding: 10px;
+	border:1px solid #d7d7d7;
+}
+
+.image2 {
+}
+
+h1 {
+	color:#010000;
+	font-size:20px;
+	margin-left:20px;
+	margin-bottom:25px;
+}
+
+h2 {
+	color:#010000;
+	font-size:17px;
+	margin-top:0px;
+	margin-left:20px;
+	margin-bottom:20px;
+	margin-right:20px;
+	font-weight:bold;
+	padding-bottom:4px;
+	border-bottom:1px solid #777;
+}
+
+h3 {
+	color:#010000;
+	font-size:16px;
+	margin-top:30px;
+	margin-left:20px;
+	margin-bottom:10px;
+	margin-right:20px;
+	font-weight:bold;
+}
+
+h4 {
+	color:#032588;
+	font-size:15px;
+	margin-top:25px;
+	margin-left:20px;
+	margin-bottom:6px;
+	margin-right:20px;
+}
+
+h5 {
+	color:#010000;
+	font-size:14px;
+	margin-top:15px;
+	margin-left:20px;
+	margin-bottom:6px;
+	margin-right:20px;
+}
+
+h6 {
+	color:#010000;
+	font-size:14px;
+	margin-top:15px;
+	margin-left:20px;
+	margin-bottom:6px;
+	margin-right:20px;
+}
+
+hr {
+  border:0;
+  margin-top:50px;
+  margin-bottom:20px;
+  margin-left:20px;
+  margin-right:20px;
+  border-top: 1px solid #dddddd;
+  height: 0;
+}
+
+a {
+	color:#032588;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p {
+	margin-left:20px;
+	margin-top: 3px;
+	margin-bottom: 0;
+	margin-right: 20px;
+}
+
+li {
+	margin-top:5px;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#headerbox {
+	clear: both;
+	margin-top: 40px;
+	margin-bottom: 28px;
+}
+
+.border {
+	width: 100%;
+	top: 0px;
+	padding: 4px 0 4px 0;
+	background-color: #eee;
+	text-align: left;
+	border-bottom: 1px solid #cccccc;
+	font-size: 9pt;
+	font-family:helvetica, arial, sans-serif;
+	position:fixed;
+	z-index:99;
+}
+
+.contentframe {
+	padding:15px;
+	margin: 0 20px 25px 20px;
+	text-align: left;
+}
+
+.note {
+	padding:15px;
+	padding-left:20px;
+	margin: 25px 20px 25px 20px;
+	text-align: left;
+	background-color: #FF9;
+	border: 1px solid #d7d7d7;
+}
+
+.imagecaption {
+	font-size:10px;
+	text-align:center;
+	margin-bottom:20px;
+	font-style:italic;
+}

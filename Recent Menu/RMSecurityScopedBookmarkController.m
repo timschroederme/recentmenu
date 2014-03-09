@@ -1,0 +1,176 @@
+//
+//  RMSecurityScopedBookmarkController.m
+//  Recent Menu
+//
+//  Created by Tim Schröder on 19.07.12.
+//  Copyright (c) 2012 Tim Schroeder. All rights reserved.
+//
+
+#import "RMSecurityScopedBookmarkController.h"
+#import "RMConstants.h"
+
+#define DEFAULTS_BOOKMARK @"SecurityBookmark"
+#define PREFWINDOW_ACCESSERRORCAPTION NSLocalizedString (@"PREFWINDOW_ACCESSERRORCAPTION", )
+#define PREFWINDOW_ACCESSERRORINFO NSLocalizedString (@"PREFWINDOW_ACCESSERRORINFO", )
+#define GRANT_ACCESS_BUTTON NSLocalizedString (@"PREFWINDOW_GRANTBUTTON", )
+
+@implementation RMSecurityScopedBookmarkController
+
+@synthesize bookmarkURL = _bookmarkURL;
+
+static RMSecurityScopedBookmarkController *_sharedController = nil;
+
+
+#pragma mark -
+#pragma mark Singleton Methods
+
++ (RMSecurityScopedBookmarkController *)sharedController
+{
+	if (!_sharedController) {
+        _sharedController = [[super allocWithZone:NULL] init];
+    }
+    return _sharedController;
+}	
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [self sharedController];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
+
+#pragma mark -
+#pragma mark Internal Methods
+
+-(void)showOutputSelectionError
+{
+    NSAlert *alert = [NSAlert alertWithMessageText:PREFWINDOW_ACCESSERRORCAPTION defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:PREFWINDOW_ACCESSERRORINFO];
+    [alert runModal];
+}
+
+#pragma mark -
+#pragma mark User Defaults Methods
+
+-(NSData*)loadBookmark
+{
+    return ([[NSUserDefaults standardUserDefaults] dataForKey:DEFAULTS_BOOKMARK]);
+}
+
+-(void)saveBookmark:(NSData*)bookmarkData
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:bookmarkData forKey:DEFAULTS_BOOKMARK];
+    [defaults synchronize];
+}
+
+-(void)deleteBookmark
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:DEFAULTS_BOOKMARK];
+    [defaults synchronize];
+}
+
+
+#pragma mark -
+#pragma mark Public Methods
+
+-(BOOL) hasBookmark
+{
+    BOOL result = NO;
+    NSData *bookmarkData = [self loadBookmark];
+    if (bookmarkData) result = YES;
+    return result;
+}
+
+-(void) startAccessingSecurityScopedBookmark
+{
+    // Create URL of bookmark file
+    NSData *data;
+    data = [self loadBookmark];
+    if (!data) {
+        NSLog (@"error loading Bookmark");
+        return;
+    }
+    
+    NSError *error = nil;
+    BOOL isStale;
+    self.bookmarkURL = [NSURL URLByResolvingBookmarkData:data
+                                                 options:NSURLBookmarkResolutionWithSecurityScope
+                                           relativeToURL:nil 
+                                     bookmarkDataIsStale:&isStale 
+                                                   error:&error];
+    if (error) NSLog (@"error retrieving security-scoped bookmark");
+    
+    [self.bookmarkURL startAccessingSecurityScopedResource];
+}
+
+-(void) stopAccessingSecurityScopedBookmark
+{
+    if (!self.bookmarkURL) return;
+    [self.bookmarkURL stopAccessingSecurityScopedResource];
+}
+
+-(void)grantBookmarkAccessForWindow:(NSWindow*)win
+{
+    NSString *path = @"/";
+    NSURL *urlPath = [NSURL URLWithString:path];
+    
+    // Prepare Open Panel
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setCanChooseFiles:NO];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setPrompt:GRANT_ACCESS_BUTTON];
+    [openPanel setDirectoryURL:urlPath];
+    [openPanel setCanCreateDirectories:YES];
+    
+    // Show Open Panel
+    [openPanel beginSheetModalForWindow:win completionHandler:^(NSInteger returnCode){
+        
+        if( returnCode == NSFileHandlingPanelCancelButton ) {
+            return;
+        }
+        
+        NSArray *urls = [openPanel URLs];
+        if( urls != nil && [urls count] == 1 ) {
+            NSURL *url = [urls objectAtIndex:0];
+            
+            // Present error message if user has chosen a custom folder
+            BOOL allowedInput = NO;
+            if ([[url absoluteString] isEqualToString:@"file://localhost/"]) allowedInput = YES;
+            if ([[url absoluteString] isEqualToString:@"file:///"]) allowedInput = YES; // Bug Fix for OS X 10.9
+            if (!allowedInput) {
+                [self showOutputSelectionError];
+                return;
+            }
+            
+            // OK, store bookmark
+            NSData *bookmark = nil;
+            NSError *error = nil;
+            bookmark = [url bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                     includingResourceValuesForKeys:nil
+                                      relativeToURL:nil // Make it app-scoped
+                                              error:&error];
+            if (error) {
+                NSLog(@"Error creating security-scoped bookmark for URL (%@): %@", url, error);
+                [NSApp presentError:error];
+            }
+            
+            // save and access security scoped bookmark
+            [self saveBookmark:bookmark];
+            [self startAccessingSecurityScopedBookmark];        
+            
+            // OK, update UI
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCESS_GRANTED object:self];
+        } else {
+            [self showOutputSelectionError];
+        }
+    }];
+}
+
+
+@end

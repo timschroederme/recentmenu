@@ -1,0 +1,94 @@
+//
+//  RMLaunchAtLoginController.m
+//  Recent Menu
+//
+//  Created by Tim Schröder on 12.07.12.
+//  Copyright (c) 2012 Tim Schroeder. All rights reserved.
+//
+
+#import "RMLaunchAtLoginController.h"
+#import "RMConstants.h"
+#import <ServiceManagement/ServiceManagement.h>
+
+@implementation RMLaunchAtLoginController
+
+static RMLaunchAtLoginController *_sharedController = nil;
+
+#pragma mark -
+#pragma mark Singleton Methods
+
++ (RMLaunchAtLoginController *)sharedController
+{
+	if (!_sharedController) {
+        _sharedController = [[super allocWithZone:NULL] init];
+    }
+    return _sharedController;
+}	
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [self sharedController];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
++ (void)initialize
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	// Default-Werte registrieren
+	NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+								 DEFAULTS_STARTUP_PRESET, DEFAULTS_STARTUP,
+								 nil];
+    [defaults registerDefaults:appDefaults];
+}
+
+
+#pragma mark -
+#pragma mark Internal Helper Methods
+
+-(void)setLaunchAtLogin:(BOOL)flag
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *num = [NSNumber numberWithBool:flag];
+    [defaults setObject:num forKey:DEFAULTS_STARTUP];
+    [defaults synchronize];
+}
+
+
+#pragma mark -
+#pragma mark Status Item Action Methods
+
+-(BOOL)launchAtLogin
+{
+    BOOL result = NO;
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:DEFAULTS_STARTUP];
+    if (num) result = [num boolValue];
+    return (result);
+}
+
+
+-(void)turnOnLaunchAtLogin
+{
+    if (!SMLoginItemSetEnabled ((CFStringRef)@"com.timschroeder.RecentMenu-Helper", YES)) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Couldn't add Recent Menu to launch at login item list."];
+        [alert runModal];
+    } else {
+        [self setLaunchAtLogin:YES];
+    }
+}
+
+-(void)turnOffLaunchAtLogin
+{
+    if (!SMLoginItemSetEnabled ((CFStringRef)@"com.timschroeder.RecentMenu-Helper", NO)) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Couldn't remove Recent Menu from launch at login item list."];
+        [alert runModal];
+    } else {
+        [self setLaunchAtLogin:NO];
+    }
+}
+
+@end

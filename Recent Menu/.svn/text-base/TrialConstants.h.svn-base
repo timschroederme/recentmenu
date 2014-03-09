@@ -1,0 +1,28 @@
+//
+//  TrialConstants.h
+//
+//  Created by Tim Schröder on 10.04.11.
+//
+
+
+// Constant Values for Trial Category on AppDelegate
+
+#define TRIAL_FACTOR 1000
+
+#define APPSTORE_IDENTIFIER @"com.timschroeder.recentmenu"
+#define APPSTORE_NAME @"Recent Menu"
+#define APPSTORE_EXIST_MESSAGE NSLocalizedString (@"APPSTORE_EXIST_MESSAGE" ,)
+#define APPSTORE_DIALOG_CAPTION NSLocalizedString (@"APPSTORE_DIAGLOG_CAPTION", )
+#define APPSTORE_QUIT_BUTTON NSLocalizedString (@"APPSTORE_QUIT_BUTTON", )
+#define APPSTORE_IGNORE_BUTTON NSLocalizedString (@"APPSTORE_IGNORE_BUTTON", )
+#define DEFAULTS_TRIALINTERVAL @"Runtime Version" // fake key to store trial period
+#define DEFAULTS_VERSION @"Bundle Version"
+#define TRIAL_MESSAGE NSLocalizedString (@"TRIAL_MESSAGE", )
+#define TRIAL_DIALOG_CAPTION NSLocalizedString (@"TRIAL_DIALOG_CAPTION", )
+#define TRIAL_LAUNCH_BUTTON NSLocalizedString (@"TRIAL_LAUNCH_BUTTON", )
+#define TRIAL_OK_BUTTON @"OK"
+#define APPSTORE_URL NSLocalizedString (@"APPSTORE_URL", )
+#define TRIAL_EXPIRED_MESSAGE NSLocalizedString (@"TRIAL_EXPIRED_MESSAGE", )
+#define TRIAL_CLOSE_BUTTON NSLocalizedString (@"TRIAL_CLOSE_BUTTON", )
+#define TRIAL_EXPIRED_CAPTION NSLocalizedString (@"TRIAL_EXPIRED_CAPTION", )
+#define TRIAL_PERIOD 28 // trial period in days

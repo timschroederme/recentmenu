@@ -1,0 +1,139 @@
+//
+//  RMConstants.h
+//  Recent Menu
+//
+//  Created by Tim Schröder on 09.02.11.
+//  Copyright 2011 Tim Schröder. All rights reserved.
+//
+
+
+// Menü-Konstanten
+
+#define numberOfGlobalItems 4
+
+#define MENU_RECENTITEMS NSLocalizedString (@"MENU_RECENTITEMS", )
+#define MENU_RECENTITEMS_EMPTY NSLocalizedString (@"MENU_RECENTITEMS_EMPTY", )
+#define MENU_RECENTITEMS_TAG 999
+#define MENU_QUIT NSLocalizedString (@"MENU_QUIT", )
+#define MENU_ABOUT NSLocalizedString (@"MENU_ABOUT", )
+#define MENU_PREFERENCES NSLocalizedString (@"MENU_PREFERENCES", )
+#define MENU_HELP NSLocalizedString (@"MENU_HELP", )
+#define MENU_SHOWINFINDER NSLocalizedString (@"MENU_SHOWINFINDER", )
+#define MENU_WAITNOTICE NSLocalizedString (@"MENU_WAITNOTICE", )
+#define MENU_SANDBOXNOTICE NSLocalizedString (@"MENU_SANDBOXNOTICE", )
+
+
+// Lokalisierungs-Konstanten
+
+#define	PREFWINDOW_TITLE NSLocalizedString (@"PREFWINDOW_TITLE", )
+#define PREFWINDOW_GENERALPANE NSLocalizedString (@"PREFWINDOW_GENERALPANE", )
+#define PREFWINDOW_SEARCHPANE NSLocalizedString (@"PREFWINDOW_SEARCHPANE", )
+#define PREFWINDOW_QUERIESPANE NSLocalizedString (@"PREFWINDOW_QUERIESPANE", )
+
+#define PREFWINDOW_STARTUP NSLocalizedString (@"PREFWINDOW_STARTUP", )
+#define PREFWINDOW_GRANTBUTTON NSLocalizedString (@"PREFWINDOW_GRANTBUTTON", )
+#define PREFWINDOW_REVOKEBUTTON NSLocalizedString (@"PREFWINDOW_REVOKEBUTTON", )
+
+#define PREFWINDOW_SEARCHTIME NSLocalizedString (@"PREFWINDOW_SEARCHTIME", )
+#define PREFWINDOW_SEARCHTIMEPREFIX NSLocalizedString (@"PREFWINDOW_SEARCHTIMEPREFIX", )
+#define PREFWINDOW_SEARCHTIMESUFFIX NSLocalizedString (@"PREFWINDOW_SEARCHTIMESUFFIX", )
+
+#define PREFWINDOW_SEARCHSCOPE NSLocalizedString (@"PREFWINDOW_SEARCHSCOPE", )
+#define PREFWINDOW_SEARCHSCOPESMALL NSLocalizedString (@"PREFWINDOW_SEARCHSCOPESMALL", )
+#define PREFWINDOW_SEARCHSCOPEBIG NSLocalizedString (@"PREFWINDOW_SEARCHSCOPEBIG", )
+
+#define PREFWINDOW_SEARCHLOCATION NSLocalizedString (@"PREFWINDOW_SEARCHLOCATION", )
+#define PREFWINDOW_SEARCHLOCATIONSMALL NSLocalizedString (@"PREFWINDOW_SEARCHLOCATIONSMALL", )
+#define PREFWINDOW_SEARCHLOCATIONBIG NSLocalizedString (@"PREFWINDOW_SEARCHLOCATIONBIG", )
+
+#define PREFWINDOW_QUERYTITLE NSLocalizedString (@"PREFWINDOW_QUERYTITLE", )
+#define PREFWINDOW_QUERYENABLEDCHECKBOX NSLocalizedString (@"PREFWINDOW_QUERYENABLEDCHECKBOX", )
+#define PREFWINDOW_QUERYENABLEDTITLE NSLocalizedString (@"PREFWINDOW_QUERYENABLEDTITLE", )
+#define PREFWINDOW_QUERYCOUNTTITLE NSLocalizedString (@"PREFWINDOW_QUERYCOUNTTITLE", )
+#define PREFWINDOW_QUERYISCAPTION NSLocalizedString (@"PREFWINDOW_QUERYISCAPTION", )
+#define PREFWINDOW_QUERYCRITERIONTITLE NSLocalizedString (@"PREFWINDOW_QUERYCRITERIONTITLE", )
+#define PREFWINDOW_WILDCARD NSLocalizedString (@"PREFWINDOW_WILDCARD", )
+
+#define PREFWINDOW_RESETCAPTION NSLocalizedString (@"PREFWINDOW_RESETCAPTION", )
+
+#define PREFWINDOW_ACCESSLABEL NSLocalizedString (@"PREFWINDOW_ACCESSLABEL", )
+#define PREFWINDOW_NEEDACCESSMESSAGE NSLocalizedString (@"PREFWINDOW_NEEDACCESSMESSAGE", )
+#define PREFWINDOW_ACCESSERRORCAPTION NSLocalizedString (@"PREFWINDOW_ACCESSERRORCAPTION", )
+#define PREFWINDOW_ACCESSERRORINFO NSLocalizedString (@"PREFWINDOW_ACCESSERRORINFO", )
+
+
+// Defaults-Konstanten
+
+#define DEFAULTS_SCOPEFILTER @"ScopeFilter"
+#define DEFAULTS_SEARCHINTERVAL @"SearchInterval"
+#define DEFAULTS_SEARCHINTERVAL_PRESET @"72"
+
+#define DEFAULTS_SEARCHLOCATION @"SearchLocation"
+#define DEFAULTS_SEARCHLOCATION_PRESET	@"0"
+
+#define DEFAULTS_STARTUP @"RunAtStartup"
+#define DEFAULTS_STARTUP_PRESET	@"0"
+
+#define DEFAULTS_KEYCODE @"Hotkey Key Code"
+#define DEFAULTS_KEYFLAGS @"Hotkey Key Flags"
+
+#define DEFAULTS_SANDBOX @"Sandbox"
+
+// Filter-Dictionary-Konstanten
+
+#define SCOPE_DICT_TITLE @"title"
+#define SCOPE_DICT_TYPE @"type"
+#define SCOPE_DICT_VALUE @"value"
+#define SCOPE_DICT_HIDDEN @"hidden"
+#define SCOPE_DICT_ENABLED	@"enabled"
+#define SCOPE_DICT_EDITABLE @"editable"
+#define SCOPE_DICT_SHOWCOUNT @"showcount"
+#define SCOPE_DICT_TAG @"tag"
+
+
+// Query-Dictionary-Konstanten
+
+#define QUERY_DICT_QUERY @"query"
+#define QUERY_DICT_COUNT @"count"
+#define QUERY_DICT_TAG @"tag"
+#define QUERY_DICT_TITLE @"title"
+
+// Konstanten für Spotlight
+
+#define SPOTLIGHT_PATH_PREFPANE @"PreferencePanes/Spotlight.prefPane"
+#define SPOTLIGHT_ERROR_TITLE NSLocalizedString (@"SPOTLIGHT_ERROR_TITLE", )
+#define SPOTLIGHT_ERROR_NOTICE	NSLocalizedString (@"SPOTLIGHT_ERROR_NOTICE", )
+#define SPOTLIGHT_ERROR_BUTTON_PREFS NSLocalizedString (@"SPOTLIGHT_ERROR_BUTTON_PREFS", )
+#define SPOTLIGHT_ERROR_BUTTON_IGN NSLocalizedString (@"SPOTLIGHT_ERROR_BUTTON_IGN", )
+
+// Sandbox-Konstanten
+
+#define DEFAULTS_BOOKMARK @"SecurityBookmark"
+
+// Sonstige Konstanten
+
+#define FIRSTRESPONDERKEY @"firstResponder"
+
+#define QUERY_DEFAULTTITLE NSLocalizedString (@"QUERY_DEFAULTTITLE", )
+#define QUERY_DEFAULTPREDICATE @"kMDItemContentTypeTree = \"\""
+#define QUERY_DEFAULTTYPE @"Filename"
+#define QUERY_DEFAULTVALUE @""
+
+#define QUERY_UTI_SHORT @"UTI"
+#define QUERY_UTI @"kMDItemContentTypeTree LIKE '"
+#define QUERY_NOT_UTI @"NOT kMDItemContentTypeTree LIKE '"
+#define QUERY_FILENAME @"kMDItemFSName LIKE '"
+#define QUERY_NOT_FILENAME @"NOT kMDItemFSName LIKE '"
+
+#define SEARCH_KEY_1 @"kMDItemLastUsedDate" 
+
+#define MDI_PATH @"kMDItemPath"
+#define MDI_DISPLAYTITLE @"kMDItemDisplayName"
+#define MDI_CONTENTTYPETREE @"kMDItemContentTypeTree"
+
+#define PATH_MAINAPPDIR @"/Applications"
+#define PATH_DEVELOPAPPDIR @"/Developer/Applications"
+
+#define NOTIFICATION_ACCESS_REMOVED @"RMAccessRemoved"
+#define NOTIFICATION_ACCESS_GRANTED @"RMAccessGranted"
+
