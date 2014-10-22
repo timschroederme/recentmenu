@@ -287,7 +287,6 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	NSImage *returnImage = [[NSImage alloc] initWithSize:size];
 	[returnImage addRepresentation:customImageRep];
 	[customImageRep release];
-	[returnImage setScalesWhenResized:YES];
 	[SRSharedImageCache setObject:returnImage forKey:name];
 	
 #ifdef SRCommonWriteDebugImagery

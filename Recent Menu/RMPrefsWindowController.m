@@ -85,17 +85,17 @@ int compareViews (id firstView, id secondView, void *context)
 	// User Defaults have changed
     if ([keyPath isEqual:[self keyPath:DEFAULTS_SEARCHINTERVAL]]) {
 		// SearchInterval changed
-		[[NSApp delegate] startAllQueries];
+		[(RMAppDelegate*)[NSApp delegate] startAllQueries];
 	}
 		
 	if ([keyPath isEqual:[self keyPath:DEFAULTS_SEARCHLOCATION]]) {
 		// SearchLocation changed
-		[[NSApp delegate] startAllQueries];
+		[(RMAppDelegate*)[NSApp delegate] startAllQueries];
 	}
 	
 	// Hauptfenster updaten, wenn Einstellungen der Query geändert wurden    
 	if ([keyPath isEqual:[self keyPath:DEFAULTS_SCOPEFILTER]]) {
-		[[NSApp delegate] startAllQueries];
+		[(RMAppDelegate*)[NSApp delegate] startAllQueries];
 	}
 }
 

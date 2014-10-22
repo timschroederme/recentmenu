@@ -107,8 +107,10 @@
 		statusItem = [bar statusItemWithLength:NSSquareStatusItemLength];
 		[statusItem retain];
         [statusItem setHighlightMode:YES];
-        [statusItem setImage:[NSImage imageNamed:@"menuitem.png"]];
-        [statusItem setAlternateImage:[NSImage imageNamed:@"menuitem-alternate.png"]];
+        NSImage *mainImage = [NSImage imageNamed:@"menuitem"];
+        [mainImage setTemplate:true];
+        [statusItem setImage:mainImage];
+
     }
 	if (!mainMenu) {
 		mainMenu = [[NSMenu alloc] initWithTitle:@""];
