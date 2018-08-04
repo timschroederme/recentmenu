@@ -26,4 +26,6 @@ Group recently accessed files and folders by using one of the built-in filters (
 
 Use the built-in system-wide hotkey to activate Recent Menu, no matter where you are.
 
+## Screenshot
+
 ![Recent Menu Screenshot](recentmenu-screenshot.png)
